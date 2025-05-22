@@ -16,9 +16,17 @@
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #000000, #001000, #003000);
             color: #e0e0e0;
-            padding: 20px;
+            padding: 15px;
             min-height: 100vh;
             background-attachment: fixed;
+            line-height: 1.5;
+        }
+
+        /* Контейнер для ограничения максимальной ширины */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
         /* Шапка */
@@ -31,6 +39,15 @@
             margin-bottom: 20px;
             border: 1px solid #00cc00;
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+            flex-direction: column;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .header {
+                flex-direction: row;
+                text-align: left;
+            }
         }
 
         .avatar {
@@ -39,7 +56,19 @@
             border: 2px solid #00cc00;
             border-radius: 10px;
             object-fit: cover;
-            margin-right: 20px;
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 768px) {
+            .avatar {
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+        }
+
+        .info-block {
+            flex: 1;
         }
 
         .info-block h2 {
@@ -77,11 +106,17 @@
 
         .game-slide img {
             width: 100%;
-            max-height: 200px;
+            max-height: 300px;
             object-fit: cover;
             border-radius: 8px;
             border: 2px solid #00cc00;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (min-width: 768px) {
+            .game-slide img {
+                max-height: 400px;
+            }
         }
 
         .game-slide p {
@@ -110,11 +145,11 @@
         }
 
         .prev {
-            left: 15px;
+            left: 10px;
         }
 
         .next {
-            right: 15px;
+            right: 10px;
         }
 
         /* Блок "О себе" */
@@ -163,8 +198,10 @@
         }
 
         .music-cover {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            aspect-ratio: 1/1;
             object-fit: cover;
             border-radius: 10px;
             border: 2px solid #00cc00;
@@ -247,64 +284,66 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <div class="header">
-        <img src="images/ava.jpg" alt="Аватарка" class="avatar">
-        <div class="info-block">
-            <h2>ховлер</h2>
-            <p>Привет!</p>
-            <p>Игры в которые играю:</p>
-        </div>
-    </div>
-
-    <!-- Слайдер игр -->
-    <div class="game-slider">
-        <button class="slider-btn prev">❮</button>
-        <div class="game-slides">
-            <div class="game-slide">
-                <img src="images/ddnet.jpg" alt="ddnet">
-                <p>ddnet</p>
-            </div>
-            <div class="game-slide">
-                <img src="images/minecraft.jpg" alt="Minecraft">
-                <p>Minecraft</p>
-            </div>
-            <div class="game-slide">
-                <img src="images/cs.jpg" alt="Counter Strike 2">
-                <p>Counter Strike 2</p>
+    <div class="container">
+        <!-- Шапка сайта -->
+        <div class="header">
+            <img src="images/ava.jpg" alt="Аватарка" class="avatar">
+            <div class="info-block">
+                <h2>ховлер</h2>
+                <p>Привет!</p>
+                <p>Игры в которые играю:</p>
             </div>
         </div>
-        <button class="slider-btn next">❯</button>
-    </div>
 
-    <!-- Блок "О себе" -->
-    <div class="about-me">
-        <h2>О себе</h2>
-        <div class="about-content">
-            <p>Привет, я – ховлер. Я увлекаюсь компьютерными играми и программированием.</p>
-            <p>Если хочешь связаться со мной то пиши в телеграм (@AdvXowler)</p>
-        </div>
-    </div>
-
-    <!-- Музыкальный плеер -->
-    <div class="music-player">
-        <h2>Любимая музыка</h2>
-        
-        <img src="images/ab1.jpg" alt="Обложка" class="music-cover">
-        <div class="music-title">В пряничном домике</div>
-        <div class="music-artist">mzlff</div>
-        <audio id="audio-element" src="am1.m4a"></audio>
-
-        <div class="progress-container" id="progress-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <div class="time-info">
-            <span class="current-time" id="current-time">0:00</span>
-            <span class="duration" id="duration">0:00</span>
+        <!-- Слайдер игр -->
+        <div class="game-slider">
+            <button class="slider-btn prev">❮</button>
+            <div class="game-slides">
+                <div class="game-slide">
+                    <img src="images/ddnet.jpg" alt="ddnet">
+                    <p>ddnet</p>
+                </div>
+                <div class="game-slide">
+                    <img src="images/minecraft.jpg" alt="Minecraft">
+                    <p>Minecraft</p>
+                </div>
+                <div class="game-slide">
+                    <img src="images/cs.jpg" alt="Counter Strike 2">
+                    <p>Counter Strike 2</p>
+                </div>
+            </div>
+            <button class="slider-btn next">❯</button>
         </div>
 
-        <div class="music-controls">
-            <button class="music-btn play-btn" id="play-btn">▶</button>
+        <!-- Блок "О себе" -->
+        <div class="about-me">
+            <h2>О себе</h2>
+            <div class="about-content">
+                <p>Привет, я – ховлер. Я увлекаюсь компьютерными играми и программированием.</p>
+                <p>Если хочешь связаться со мной то пиши в телеграм (@AdvXowler)</p>
+            </div>
+        </div>
+
+        <!-- Музыкальный плеер -->
+        <div class="music-player">
+            <h2>Любимая музыка</h2>
+            
+            <img src="images/ab1.jpg" alt="Обложка" class="music-cover">
+            <div class="music-title">В пряничном домике</div>
+            <div class="music-artist">mzlff</div>
+            <audio id="audio-element" src="am1.m4a"></audio>
+
+            <div class="progress-container" id="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="time-info">
+                <span class="current-time" id="current-time">0:00</span>
+                <span class="duration" id="duration">0:00</span>
+            </div>
+
+            <div class="music-controls">
+                <button class="music-btn play-btn" id="play-btn">▶</button>
+            </div>
         </div>
     </div>
 
